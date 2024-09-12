@@ -38,6 +38,15 @@ class MainActivity : AppCompatActivity() {
             updateQuestion()
         }
 
+        //use setOnClickListener on previousButton to allow backwards movement
+        binding.previousButton.setOnClickListener {
+            if (currentIndex == 0) //if on first question
+                currentIndex = questionBank.size - 1 //set currentIndex to last question index
+            else
+                currentIndex = (currentIndex - 1) % questionBank.size
+            updateQuestion()
+        }
+
         binding.questionTextView.setOnClickListener {
             currentIndex = (currentIndex + 1) % questionBank.size
             updateQuestion()
